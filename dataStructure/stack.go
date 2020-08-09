@@ -42,3 +42,16 @@ func (s *Stack)Size() int64 {
 func (s *Stack)IsEmpty() bool {
 	return s.size == 0
 }
+
+func (s *Stack)Index(data interface{}) int64 {
+	for k, val := range s.stack {
+		if val == data {
+			return int64(k)
+		}
+	}
+	return -1
+}
+
+func(s *Stack) ShowAll() []interface{} {
+	return s.stack
+}

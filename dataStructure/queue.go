@@ -43,3 +43,7 @@ func(q *Queue) Tail()(interface{}, error) {
 func(q *Queue) IsEmpty() bool {
 	return q.size == 0
 }
+
+func(q *Queue) ShowAll() []interface{} {
+	return q.queue
+}
