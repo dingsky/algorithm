@@ -3,7 +3,7 @@ package dataStructure
 import "errors"
 
 type Queue struct {
-	queue []int64
+	queue []interface{}
 	size int64
 }
 
@@ -11,12 +11,12 @@ func(q *Queue)Size ()int64{
 	return q.size
 }
 
-func(q *Queue) InQueue(data int64) {
+func(q *Queue) InQueue(data interface{}) {
 	q.queue = append(q.queue, data)
 	q.size++
 }
 
-func(q *Queue) OutQueue()(int64, error) {
+func(q *Queue) OutQueue()(interface{}, error) {
 	if q.size <= 0 {
 		return 0, errors.New("queue is empty")
 	}
@@ -26,14 +26,14 @@ func(q *Queue) OutQueue()(int64, error) {
 	return data, nil
 }
 
-func(q *Queue) Head()(int64, error) {
+func(q *Queue) Head()(interface{}, error) {
 	if q.size <= 0 {
 		return 0, errors.New("queue is empty")
 	}
 	return q.queue[0], nil
 }
 
-func(q *Queue) Tail()(int64, error) {
+func(q *Queue) Tail()(interface{}, error) {
 	if q.size <= 0 {
 		return 0, errors.New("queue is empty")
 	}
