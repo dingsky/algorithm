@@ -18,26 +18,36 @@ var walkStep = [4][2]int64{
 
 func GetShortestPath(mapArray [5][5]int64) {
 	var min int64
-	walk(&mapArray, 0, 0, 0, &min)
+	path := make([][]int64, 0)
+	walk(&mapArray, 0, 0, 0, &min, &path)
 	fmt.Printf("%d", min)
+	fmt.Println("path:",path)
 }
 
 
 
-func walk(mapArray *[5][5]int64, x,y, steps int64, min *int64) {
+func walk(mapArray *[5][5]int64, x,y, steps int64, min *int64, path *[][]int64) {
 
 	// 分别向右, 下, 左, 上走
 	for i:=0; i<4; i++ {
 		x += walkStep[i][0]
 		y += walkStep[i][1]
-		if x < 0 || x >= 5 || y < 0 || y >=5 || mapArray[x][y] == 1 || mapArray[x][y] == 2 {continue}
+		steps++
+		if x < 0 || x >= 5 || y < 0 || y >=5 || mapArray[x][y] == 1 || mapArray[x][y] == 2 {
+	//		*path = (*path)[0:0]
+			continue
+		}
 		if mapArray[x][y] == 9 {
 			if *min == 0 || steps < *min {
+		//		fmt.Printf("steps:%d x:%d y:%d\n", steps, x, y)
 				*min = steps
 			}
 		} else {
+		//	fmt.Printf("step:%d x:%d y:%d\n", steps, x,y)
 			mapArray[x][y] = 2
-			walk(mapArray, x, y, steps+1, min)
+			*path = append(*path, []int64{x,y})
+		//	fmt.Println("path:", *path)
+			walk(mapArray, x, y, steps, min, path)
 			mapArray[x][y] = 0
 		}
 	}
