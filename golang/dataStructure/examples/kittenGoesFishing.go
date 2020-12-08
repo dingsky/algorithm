@@ -1,7 +1,7 @@
 package main
 
 import (
-	"algorithm/dataStructure"
+	"algorithm/golang/dataStructure"
 	"fmt"
 )
 
@@ -11,7 +11,7 @@ import (
 // 其中一个玩家手中的队列空了，则游戏结束
 
 type gameDef struct {
-	stack dataStructure.Stack
+	stack  dataStructure.Stack
 	queue1 dataStructure.Queue
 	queue2 dataStructure.Queue
 }
