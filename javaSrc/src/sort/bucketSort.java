@@ -8,16 +8,15 @@ import java.util.Random;
 // 空间复杂度: O(N)
 public class bucketSort {
     public static void sort(int[] array) {
-        int[] bucket = new int[256];
+        int[] bucket = new int[100000];
 
         // 遍历数组, 放入桶中
         for(int i=0; i < array.length; i++) {
             bucket[array[i]]++;
         }
 
-
         // 遍历桶, 拿出有序数据
-        for(int i=0, j=0; i < 256; i++) {
+        for(int i=0, j=0; i < 100000; i++) {
             while(bucket[i] > 0) {
                 array[j] = i;
                 j++;
@@ -27,11 +26,11 @@ public class bucketSort {
     }
 
     public static void main(String[] args) {
-        int[] array = new int[20];
+        int[] array = new int[100000];
 
         Random random = new Random();
-        for(int i=0; i<20; i++) {
-            array[i] = random.nextInt(20);
+        for(int i=0; i<100000; i++) {
+            array[i] = random.nextInt(100000);
         }
         sort(array);
         for(int i : array) {
