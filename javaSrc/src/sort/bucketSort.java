@@ -7,8 +7,9 @@ import java.util.Random;
 // 时间复杂度:
 // 空间复杂度: O(N)
 public class bucketSort {
+    private static final int count = 100000;
     public static void sort(int[] array) {
-        int[] bucket = new int[100000];
+        int[] bucket = new int[count];
 
         // 遍历数组, 放入桶中
         for(int i=0; i < array.length; i++) {
@@ -16,7 +17,7 @@ public class bucketSort {
         }
 
         // 遍历桶, 拿出有序数据
-        for(int i=0, j=0; i < 100000; i++) {
+        for(int i=0, j=0; i < count; i++) {
             while(bucket[i] > 0) {
                 array[j] = i;
                 j++;
@@ -26,11 +27,11 @@ public class bucketSort {
     }
 
     public static void main(String[] args) {
-        int[] array = new int[100000];
+        int[] array = new int[count];
 
         Random random = new Random();
         for(int i=0; i<100000; i++) {
-            array[i] = random.nextInt(100000);
+            array[i] = random.nextInt(count);
         }
         sort(array);
         for(int i : array) {
