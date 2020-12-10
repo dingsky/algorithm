@@ -50,15 +50,15 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int[] array = new int[20];
+        int[] array = new int[10000];
 
         Random random = new Random();
-        for(int i=0; i<20; i++) {
-            array[i] = random.nextInt(20);
+        for(int i=0; i<10000; i++) {
+            array[i] = random.nextInt(10000);
         }
-        for(int i : array) {
-            System.out.println(i);
-        }
+//        for(int i : array) {
+//            System.out.println(i);
+//        }
 
         sort(array);
         System.out.println("===========================");
