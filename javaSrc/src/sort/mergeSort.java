@@ -15,20 +15,16 @@ public class mergeSort {
         // 将一个数组分割成两个有序的数组
         int mid = array.length / 2;
         int[] leftArray = cutArray(array, 0, mid);
-        int[] rightArray = cutArray(array, mid+1, array.length - 1);
+        int[] rightArray = cutArray(array, mid, array.length);
+
+   //     showArray("leftArray", leftArray);
+   //     showArray("rightArray", rightArray);
+
         int[] sortLeftArray = mergeSort(leftArray);
         int[] sortRightArray = mergeSort(rightArray);
 
-        for(int i=0; i<sortLeftArray.length; i++) {
-            System.out.println("leftArray:" + i + "num:" + sortLeftArray[i]);
-        }
-        System.out.println("===========================================");
-
-        for(int i=0; i<sortRightArray.length; i++) {
-            System.out.println("rightArray:" + i + "num:" + sortRightArray[i]);
-        }
-        System.out.println("===========================================");
-
+   //     showArray("sortLeftArray", sortLeftArray);
+   //     showArray("sortRightArray", sortRightArray);
 
         // 创建一个结果集
         int[] result = new int[sortLeftArray.length + sortRightArray.length];
@@ -48,12 +44,26 @@ public class mergeSort {
         return result;
     }
 
+    public static void sort(int[] array) {
+        int[] result = mergeSort(array);
+        for(int i=0; i<array.length; i++) {
+            array[i] = result[i];
+        }
+    }
+
     private static int[] cutArray(int[] array, int start, int end) {
-        int[] result = new int[end - start + 1];
+        int[] result = new int[end - start];
         for(int i=start, j=0; i<end; i++, j++) {
             result[j] = array[i];
         }
         return result;
+    }
+
+    private static void showArray(String name, int[] array) {
+        for(int i=0; i<array.length; i++) {
+            System.out.println(name + ": " + i + "num:" + array[i]);
+        }
+        System.out.println("===========================================");
     }
 
     public static void main(String[] args) {
@@ -66,7 +76,9 @@ public class mergeSort {
         for(int i : array) {
             System.out.println(i);
         }
-        mergeSort(array);
+        sort(array);
+        System.out.println("===========================================");
+
         for(int i : array) {
             System.out.println(i);
         }
