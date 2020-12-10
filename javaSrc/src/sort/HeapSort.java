@@ -9,8 +9,11 @@ import java.util.Random;
 public class HeapSort {
     public static void sort(int[] array) {
         for(int i=array.length-1; i > 0; i--) {
+            // 重新构建大顶堆
             adjustHeap(array, i);
      //       showArray("array", array);
+
+            // 将堆顶最大的元素, 替换到数组尾部
             swap(array, 0, i);
         }
     }
@@ -26,6 +29,7 @@ public class HeapSort {
     private static void adjustHeapNode(int[] array, int nodeIndex) {
         int left = nodeIndex * 2 + 1;
         int right = left + 1;
+        // 如果左右节点有比当前节点大的元素, 则将当前节点和孩子节点中较大的替换
         if(array[left] > array[nodeIndex] || array[right] > array[nodeIndex]) {
             int max = array[left] > array[right]?left:right;
             swap(array, nodeIndex, max);
