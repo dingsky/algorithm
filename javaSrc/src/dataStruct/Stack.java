@@ -1,15 +1,16 @@
 package dataStruct;
 
+// 实现一个栈
 public class Stack {
 
     // 数组存储
-    int[] data;
+    private int[] data;
 
     // 容量
-    int capicity;
+    private int capicity;
 
     // 当前大小
-    int size;
+    private int size;
 
     // 构造方法
     public Stack(int capicity) {
@@ -18,7 +19,7 @@ public class Stack {
     }
 
     // 入栈
-    Stack push(int data) {
+    public Stack push(int data) {
         if(size+1 > capicity) {
             return this;
         }
@@ -28,29 +29,29 @@ public class Stack {
     }
 
     // 出栈
-    int pop() {
+    public int pop() {
         int top = this.data[size-1];
         size--;
         return top;
     }
 
     // 获取栈顶
-    int top() {
+    public int top() {
         return this.data[size-1];
     }
 
     // 栈是否为空
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return size <= 0;
     }
 
     // 栈大小
-    int size() {
+    public int size() {
         return size;
     }
 
     // 打印栈
-    void show() {
+    public void show() {
         for(int i=0; i<size; i++) {
             System.out.printf("%d ", data[i]);
         }

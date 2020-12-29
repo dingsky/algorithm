@@ -45,7 +45,7 @@ public class List {
     }
 
     // 在表头插入
-    List headInsert(int data) {
+    public List headInsert(int data) {
         if(size > capacity) {
             return this;
         }
@@ -66,7 +66,7 @@ public class List {
     }
 
     // 在表尾插入
-    List tailInsert(int data) {
+    public List tailInsert(int data) {
         if(size > capacity) {
             return this;
         }
@@ -87,17 +87,17 @@ public class List {
     }
 
     // 判断一个链表是否为空
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return this.size <= 0;
     }
 
     // 获取当前链表大小
-    int size() {
+    public int size() {
         return this.size;
     }
 
     // 遍历一个链表
-    void TravelList() {
+    public void TravelList() {
         Node node = this.head;
         while(node != null) {
             System.out.println(node.getData());
